@@ -1,7 +1,7 @@
 import { NativeModules } from 'react-native';
 
 type FileAssetType = {
-  multiply(a: number, b: number): Promise<number>;
+  loadTextFile(name: string, type: string): Promise<string>;
 };
 
 const { FileAsset } = NativeModules;
