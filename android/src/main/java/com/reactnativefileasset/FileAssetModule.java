@@ -11,7 +11,7 @@ import com.facebook.react.module.annotations.ReactModule;
 @ReactModule(name = FileAssetModule.NAME)
 public class FileAssetModule extends ReactContextBaseJavaModule {
     public static final String NAME = "FileAsset";
-
+    public  static final String ERROR_TAG = "Fetch content failure";
     public FileAssetModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -23,12 +23,39 @@ public class FileAssetModule extends ReactContextBaseJavaModule {
     }
 
 
-    // Example method
-    // See https://reactnative.dev/docs/native-modules-android
     @ReactMethod
-    public void multiply(int a, int b, Promise promise) {
-        promise.resolve(a * b);
+    public void loadTextFile(String name, String type, Promise promise) {
+        try {
+            if (name.isEmpty()) {
+                promise.reject(ERROR_TAG, "invalid file name");
+                return;
+            }
+            if (type.isEmpty()) {
+                promise.reject(ERROR_TAG, "invalid file type");
+                return;
+            }
+            String content = Utilities.AssetFileToString(getReactApplicationContext(), String.format("%s.%s", name, type));
+            promise.resolve(content);
+        } catch (Exception e) {
+            promise.reject(ERROR_TAG, e);
+        }
     }
 
-    public static native int nativeMultiply(int a, int b);
+    @ReactMethod
+    public void loadFilePath(String name, String type, Promise promise) {
+        try {
+            if (name.isEmpty()) {
+                promise.reject(ERROR_TAG, "invalid file name");
+                return;
+            }
+            if (type.isEmpty()) {
+                promise.reject(ERROR_TAG, "invalid file type");
+                return;
+            }
+            String path = Utilities.AssetFilePath(getReactApplicationContext(), String.format("%s.%s", name, type));
+            promise.resolve(path);
+        } catch (Exception e) {
+            promise.reject(ERROR_TAG, e);
+        }
+    }
 }
