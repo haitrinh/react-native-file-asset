@@ -42,7 +42,7 @@ public class FileAssetModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void loadTextFile(String name, String type, Promise promise) {
+    public void loadFilePath(String name, String type, Promise promise) {
         try {
             if (name.isEmpty()) {
                 promise.reject(ERROR_TAG, "invalid file name");
@@ -52,8 +52,8 @@ public class FileAssetModule extends ReactContextBaseJavaModule {
                 promise.reject(ERROR_TAG, "invalid file type");
                 return;
             }
-            String content = Utilities.AssetFileToString(getReactApplicationContext(), String.format("%s.%s", name, type));
-            promise.resolve(content);
+            String path = Utilities.AssetFilePath(getReactApplicationContext(), String.format("%s.%s", name, type));
+            promise.resolve(path);
         } catch (Exception e) {
             promise.reject(ERROR_TAG, e);
         }

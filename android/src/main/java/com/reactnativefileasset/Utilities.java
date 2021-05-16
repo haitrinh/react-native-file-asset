@@ -36,9 +36,9 @@ public class Utilities {
                 FileOutputStream outputStream = new FileOutputStream(cacheFile);
                 try {
                     byte[] buf = new byte[1024];
-                    int lenth;
-                    while ((lenth = inputStream.read(buf)) > 0) {
-                        outputStream.write(buf, 0, lenth);
+                    int length;
+                    while ((length = inputStream.read(buf)) > 0) {
+                        outputStream.write(buf, 0, length);
                     }
                 } finally {
                     outputStream.close();
