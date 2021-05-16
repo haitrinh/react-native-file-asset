@@ -103,3 +103,9 @@ dist
 # TernJS port file
 .tern-port
 example/ios/Pods/
+example/android/.gradle/
+example/android/.idea/
+android/.gradle/
+android/.idea/
+android/local.properties
+android/gradle/wrapper/gradle-wrapper.jar
