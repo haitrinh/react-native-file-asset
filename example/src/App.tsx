@@ -4,11 +4,17 @@ import { StyleSheet, View, Text } from 'react-native';
 import FileAsset from 'react-native-file-asset';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | undefined>();
 
   React.useEffect(() => {
-    FileAsset.multiply(3, 7).then(setResult);
-  }, []);
+    FileAsset.loadTextFile('text', 'txt')
+      .then((content: string) => {
+        setResult(content);
+      })
+      .catch((error: Error) => {
+        console.log(error);
+      });
+  }, [setResult]);
 
   return (
     <View style={styles.container}>
