@@ -1,6 +1,6 @@
 {
   "name": "react-native-file-asset",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a package to load file from android's asset and iOS's resource",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
