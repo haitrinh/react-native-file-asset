@@ -6,7 +6,9 @@ const RNFS = require('react-native-fs');
 export default function App() {
   const [result, setResult] = React.useState<string | undefined>();
   const [path, setPath] = React.useState<string | undefined>();
-  const [contentFromPath, setContentFromPath] = React.useState<string | undefined>();
+  const [contentFromPath, setContentFromPath] = React.useState<
+    string | undefined
+  >();
 
   React.useEffect(() => {
     FileAsset.loadTextFile('text', 'txt')
