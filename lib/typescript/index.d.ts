@@ -1,5 +1,6 @@
 declare type FileAssetType = {
-    multiply(a: number, b: number): Promise<number>;
+    loadTextFile(name: string, type: string): Promise<string>;
+    loadFilePath(name: string, type: string): Promise<string>;
 };
 declare const _default: FileAssetType;
 export default _default;
