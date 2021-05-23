@@ -34,7 +34,10 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "asset",
+    "file",
+    "resource"
   ],
   "repository": "https://github.com/haitrinh/react-native-file-asset",
   "author": "Hai Trinh <trinhtienhai@gmail.com> (https://github.com/haitrinh)",
